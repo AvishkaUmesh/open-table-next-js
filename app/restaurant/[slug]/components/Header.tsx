@@ -1,4 +1,4 @@
-import renderTitle from '@/untils/renderTitle';
+import renderTitle from '@/utils/renderTitle';
 
 function Header({ name }: { name: string }) {
   return (

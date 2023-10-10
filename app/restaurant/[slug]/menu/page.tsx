@@ -1,4 +1,4 @@
-import renderTitle from '@/untils/renderTitle';
+import renderTitle from '@/utils/renderTitle';
 import { Item, PrismaClient } from '@prisma/client';
 import { Metadata } from 'next';
 import Menu from '../components/Menu';
