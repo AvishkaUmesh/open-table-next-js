@@ -1,8 +1,5 @@
-const renderTitle = (name: string) => {
-  const title = name.split('-');
-  title[title.length - 1] = `(${title[title.length - 1]})`;
-  return title.join(' ');
-};
+import renderTitle from '@/untils/renderTitle';
+
 function Header({ name }: { name: string }) {
   return (
     <div className="h-96 overflow-hidden">

@@ -1,12 +1,21 @@
+import renderTitle from '@/untils/renderTitle';
 import { Item, PrismaClient } from '@prisma/client';
 import { Metadata } from 'next';
 import Menu from '../components/Menu';
 import RestaurantNavBar from '../components/RestaurantNavBar';
 
-export const metadata: Metadata = {
-  title: 'Menu of Milestones Restaurant | OpenTable',
-  description: 'Book a table at your favorite restaurant',
-};
+export function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Metadata {
+  const restaurantTitle = renderTitle(params.slug);
+
+  return {
+    title: `Menu of ${restaurantTitle} Restaurant | OpenTable`,
+    description: 'Book a table at your favorite restaurant',
+  };
+}
 
 const prisma = new PrismaClient();
 
