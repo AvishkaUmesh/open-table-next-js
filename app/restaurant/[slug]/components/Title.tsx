@@ -1,7 +1,7 @@
-function Title() {
+function Title({ name }: { name: string }) {
   return (
     <div className="mt-4 border-b pb-6">
-      <h1 className="text-6xl font-bold">Milesstone Grill</h1>
+      <h1 className="text-6xl font-bold">{name}</h1>
     </div>
   );
 }
