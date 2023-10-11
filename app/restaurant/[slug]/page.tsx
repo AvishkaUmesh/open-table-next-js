@@ -1,5 +1,5 @@
 import renderTitle from '@/utils/renderTitle';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Review } from '@prisma/client';
 import { Metadata } from 'next';
 import Description from './components/Description';
 import Images from './components/Images';
@@ -15,6 +15,7 @@ interface Restaurant {
   images: string[];
   description: string;
   slug: string;
+  reviews: Review[];
 }
 
 export function generateMetadata({
@@ -43,6 +44,7 @@ const fetchRestaurant = async (slug: string): Promise<Restaurant> => {
       images: true,
       description: true,
       slug: true,
+      reviews: true,
     },
   });
 
@@ -61,10 +63,10 @@ async function RestaurantDetails({ params }: { params: { slug: string } }) {
       <div className="w-[70%] rounded bg-white p-3 shadow">
         <RestaurantNavBar slug={restaurant.slug} />
         <Title name={restaurant.name} />
-        <Rating />
+        <Rating reviews={restaurant.reviews} />
         <Description description={restaurant.description} />
         <Images images={restaurant.images} />
-        <Reviews />
+        <Reviews reviews={restaurant.reviews} />
       </div>
       <div className="relative w-[27%] text-reg">
         <ReservationCard />
