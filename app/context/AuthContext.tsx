@@ -14,7 +14,7 @@ interface User {
 interface State {
   loading: boolean;
   user: User | null;
-  error: string[] | null;
+  errors: string[] | null;
 }
 
 interface AuthState extends State {
@@ -24,7 +24,7 @@ interface AuthState extends State {
 export const AuthenticationContext = createContext<AuthState>({
   loading: false,
   user: null,
-  error: null,
+  errors: null,
   setAuthState: () => {},
 });
 
@@ -32,7 +32,7 @@ function AuthContext({ children }: { children: React.ReactNode }) {
   const [authState, setAuthState] = useState<State>({
     loading: false,
     user: null,
-    error: null,
+    errors: null,
   });
 
   return (
