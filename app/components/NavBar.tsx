@@ -7,7 +7,7 @@ import { AuthenticationContext } from '../context/AuthContext';
 import AuthModal from './AuthModal';
 
 function NavBar() {
-  const { user, loading } = useContext(AuthenticationContext);
+  const { user } = useContext(AuthenticationContext);
 
   const { signOut } = useAuth();
 
@@ -22,7 +22,7 @@ function NavBar() {
       </Link>
       <div>
         <div className="flex">
-          {!loading && user && (
+          {user && (
             <button
               className=" mr-3  rounded border bg-blue-400 p-1 px-4 text-white"
               onClick={handleLogout}
@@ -30,7 +30,7 @@ function NavBar() {
               Sign Out
             </button>
           )}
-          {!loading && !user && (
+          {!user && (
             <>
               <AuthModal isSignIn />
               <AuthModal isSignIn={false} />
