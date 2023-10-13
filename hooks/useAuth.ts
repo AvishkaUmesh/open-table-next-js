@@ -6,13 +6,16 @@ const API_URL = 'http://localhost:3000/api/auth';
 const useAuth = () => {
   const { setAuthState } = useContext(AuthenticationContext);
 
-  const signIn = async ({
-    email,
-    password,
-  }: {
-    email: string;
-    password: string;
-  }) => {
+  const signIn = async (
+    {
+      email,
+      password,
+    }: {
+      email: string;
+      password: string;
+    },
+    handleClose: () => void
+  ) => {
     setAuthState({ user: null, errors: null, loading: true });
     try {
       const response = await axios.post(`${API_URL}/signin`, {
@@ -20,6 +23,7 @@ const useAuth = () => {
         password,
       });
       setAuthState({ user: response.data, errors: null, loading: false });
+      handleClose();
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         setAuthState({

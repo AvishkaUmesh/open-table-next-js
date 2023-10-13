@@ -59,7 +59,10 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
 
   const onSubmitHandler = async () => {
     if (isSignIn) {
-      await signIn({ email: inputs.email, password: inputs.password });
+      await signIn(
+        { email: inputs.email, password: inputs.password },
+        handleClose
+      );
     } else {
       // await signUp(inputs);
     }
