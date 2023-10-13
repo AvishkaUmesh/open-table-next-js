@@ -35,7 +35,7 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
     password: '',
   });
   const [disabled, setDisabled] = useState(true);
-  const { signIn } = useAuth();
+  const { signIn, signUp } = useAuth();
   const { errors, loading } = useContext(AuthenticationContext);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
         handleClose
       );
     } else {
-      // await signUp(inputs);
+      await signUp(inputs, handleClose);
     }
   };
 
@@ -113,7 +113,13 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
                 {errors && (
                   <div className="pb-1 pt-3">
                     {errors.map((error, index) => (
-                      <Alert key={index} severity="error">
+                      <Alert
+                        key={index}
+                        severity="error"
+                        style={{
+                          marginTop: '10px',
+                        }}
+                      >
                         {error}
                       </Alert>
                     ))}
