@@ -17,6 +17,8 @@ interface Restaurant {
   description: string;
   slug: string;
   reviews: Review[];
+  open_time: string;
+  close_time: string;
 }
 
 export function generateMetadata({
@@ -46,6 +48,8 @@ const fetchRestaurant = async (slug: string): Promise<Restaurant> => {
       description: true,
       slug: true,
       reviews: true,
+      open_time: true,
+      close_time: true,
     },
   });
 
@@ -70,7 +74,10 @@ async function RestaurantDetails({ params }: { params: { slug: string } }) {
         <Reviews reviews={restaurant.reviews} />
       </div>
       <div className="relative w-[27%] text-reg">
-        <ReservationCard />
+        <ReservationCard
+          openTime={restaurant.open_time}
+          closeTime={restaurant.close_time}
+        />
       </div>
     </>
   );
