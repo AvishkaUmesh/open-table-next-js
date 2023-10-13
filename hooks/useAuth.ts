@@ -1,6 +1,8 @@
 import { AuthenticationContext } from '@/app/context/AuthContext';
 import axios from 'axios';
+import { deleteCookie } from 'cookies-next';
 import { useContext } from 'react';
+
 const API_URL = 'http://localhost:3000/api/auth';
 
 const useAuth = () => {
@@ -77,9 +79,15 @@ const useAuth = () => {
     }
   };
 
+  const signOut = () => {
+    deleteCookie('jwt');
+    setAuthState({ user: null, errors: null, loading: false });
+  };
+
   return {
     signIn,
     signUp,
+    signOut,
   };
 };
 

@@ -34,7 +34,7 @@ export const AuthenticationContext = createContext<AuthState>({
 
 function AuthContext({ children }: { children: React.ReactNode }) {
   const [authState, setAuthState] = useState<State>({
-    loading: false,
+    loading: true,
     user: null,
     errors: null,
   });
