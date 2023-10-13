@@ -30,6 +30,17 @@ export default async function handler(
       },
     });
 
-    return res.status(200).json({ user });
+    if (!user) {
+      return res.status(401).json({ message: 'User not found' });
+    }
+
+    return res.status(200).json({
+      id: user.id,
+      email: user.email,
+      firstName: user.first_name,
+      lastName: user.last_name,
+      city: user.city,
+      phone: user.phone,
+    });
   }
 }
