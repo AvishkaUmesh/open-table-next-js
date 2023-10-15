@@ -77,6 +77,7 @@ async function RestaurantDetails({ params }: { params: { slug: string } }) {
         <ReservationCard
           openTime={restaurant.open_time}
           closeTime={restaurant.close_time}
+          slug={restaurant.slug}
         />
       </div>
     </>
