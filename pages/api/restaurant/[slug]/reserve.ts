@@ -54,7 +54,7 @@ export default async function handler(
     });
 
     if (errors.length > 0) {
-      return res.status(400).json({ errors });
+      return res.status(400).json({ message: errors[0] });
     }
 
     const restaurant = await prisma.restaurant.findUnique({

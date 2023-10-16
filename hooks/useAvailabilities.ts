@@ -37,7 +37,7 @@ export default function useAvailabilities() {
     } catch (error: unknown) {
       setLoading(false);
       if (axios.isAxiosError(error)) {
-        setError(error.response?.data.errorMessage);
+        setError(error.response?.data.message);
       } else {
         setError('Something went wrong');
       }

@@ -123,7 +123,7 @@ function ReservationCard({
           {!loading && 'Find a Time'}
         </button>
       </div>
-      {data && data.length && (
+      {data && data.length > 0 && (
         <div className="mt-4">
           <p className="text-reg">Select a Time</p>
           <div className="mt-2 flex flex-wrap">
